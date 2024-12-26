@@ -19,9 +19,8 @@ func transform(vec: Vector2):
 	return vec
 
 func _ready() -> void:
-	player = AudioStreamPlayer2D.new()
+	player = $AudioStreamPlayer2D
 	player.volume_db = -16
-	add_child(player)
 	player.stream = AudioStreamPD.new()
 	
 	pd = player.stream
