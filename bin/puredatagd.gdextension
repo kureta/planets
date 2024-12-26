@@ -1,0 +1,26 @@
+[configuration]
+
+entry_symbol = "puredata_library_init"
+compatibility_minimum = "4.3"
+reloadable = true
+
+[libraries]
+
+linux.debug.x86_64 = "res://bin/libPureDataGD.so"
+linux.release.x86_64 = "res://bin/libPureDataGD.so"
+windows.debug.x86_64 = "res://bin/PureDataGD.dll"
+windows.release.x86_64 = "res://bin/PureDataGD.dll"
+
+[dependencies]
+windows.debug.x86_64 = {
+  "res://bin/libpd.dll": ""
+}
+windows.release.x86_64 = {
+  "res://bin/libpd.dll": ""
+}
+linux.debug.x86_64 = {
+  "res://bin/libpd.so": ""
+}
+linux.release.x86_64 = {
+  "res://bin/libpd.so": ""
+}

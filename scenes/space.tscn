@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://seksrve13ty7"]
+
+[ext_resource type="Script" path="res://scripts/space.gd" id="1_i52tv"]
+
+[node name="Space" type="Node2D"]
+script = ExtResource("1_i52tv")
+G = 10000.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
