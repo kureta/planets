@@ -1,16 +1,16 @@
 extends Node2D
 
-@export var v0: Vector2
-@export var acc: Vector2
-@export var x_prev: Vector2
-@export var x_current: Vector2 
+var v0: Vector2
+var acc: Vector2
+var x_prev: Vector2
+var x_current: Vector2 
 
 var first_step = true
 
-@export var player: AudioStreamPlayer2D
-@export var is_playing = false
-var pd: AudioStreamPD
+var player: AudioStreamPlayer2D
+var is_playing = false
 
+var pd: AudioStreamPD
 var f = 440.0
 
 # TODO: use leapfrog integration to conserve momentum
