@@ -9,3 +9,7 @@ script = ExtResource("1_wdddy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_6ynsj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+attenuation = 15.0
+panning_strength = 100.0
