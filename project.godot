@@ -14,3 +14,7 @@ config/name="Planets"
 run/main_scene="res://scenes/space.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://resources/icon.svg"
+
+[physics]
+
+common/physics_ticks_per_second=240
