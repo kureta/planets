@@ -11,7 +11,9 @@ var center_of_mass
 # parameters. speed = pitch for example. Or we can keep track of the winding
 # number and let that together with angle determine octave and pitchclass
 func rand_vec(amp):
-	return Vector2(amp, 0).rotated(randf_range(0, TAU))
+	var vec = Vector2.from_angle(TAU * randf())
+	vec = amp * randf() * vec
+	return vec
 
 func _ready() -> void:
 	var node_scene = preload("res://scenes/planet.tscn")
@@ -19,11 +21,11 @@ func _ready() -> void:
 	add_child(center_of_mass)
 	center_of_mass.player.stop()
 	$AudioListener2D.position = center_of_mass.position
-	for i in range(3):
+	for i in range(5):
 		var instance = node_scene.instantiate()
 		instance.is_playing = true
-		instance.x_current = rand_vec(150)
-		instance.v0 = rand_vec(100 * randf())
+		instance.x_current = rand_vec(250)
+		instance.v0 = rand_vec(150 * randf())
 		instance.acc = Vector2(0, 0)
 		planets.append(instance)
 		forces.append(Vector2(0, 0))
@@ -43,7 +45,6 @@ func _ready() -> void:
 	add_child(last_one)
 
 func _physics_process(_delta: float):
-	center_of_mass.x_current = Vector2(0, 0)
 	for i in range(len(forces)):
 		forces[i] = Vector2(0, 0)
 	for i in range(len(planets)):
@@ -52,6 +53,7 @@ func _physics_process(_delta: float):
 			
 			forces[i] += -r * (G / r.length_squared())
 			forces[j] += r * (G / r.length_squared())
+	center_of_mass.x_current = Vector2(0, 0)
 	for i in range(len(planets)):
 		planets[i].acc = forces[i]
 		center_of_mass.x_current += planets[i].x_current
