@@ -13,7 +13,6 @@ var is_playing = false
 var pd: AudioStreamPD
 var f = 440.0
 
-# TODO: use leapfrog integration to conserve momentum
 func transform(vec: Vector2):
 	vec *= Vector2(1, -1)
 	vec += get_viewport_rect().size / 2
@@ -32,6 +31,7 @@ func _ready() -> void:
 
 	player.play()
 
+# TODO: use leapfrog integration to conserve momentum
 func leapforg(delta):
 	if first_step:
 		v0 = v0 + acc * delta
@@ -45,7 +45,6 @@ func _physics_process(delta: float):
 	position = transform(x_current)
 
 func _process(delta: float):
-	var amp = exp(-x_current.length_squared()/10000)
 	pd.send_float("ms", delta * 1000)
-	pd.send_float("volume", amp)
+	pd.send_float("volume", 1.0)
 	pd.send_float("freq", f)
