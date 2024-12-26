@@ -20,7 +20,6 @@ func _ready() -> void:
 	center_of_mass = node_scene.instantiate()
 	add_child(center_of_mass)
 	center_of_mass.player.stop()
-	$AudioListener2D.position = center_of_mass.position
 	for i in range(5):
 		var instance = node_scene.instantiate()
 		instance.is_playing = true
@@ -54,8 +53,8 @@ func _physics_process(_delta: float):
 			forces[i] += -r * (G / r.length_squared())
 			forces[j] += r * (G / r.length_squared())
 	center_of_mass.x_current = Vector2(0, 0)
+	# TODO: move leapfrog or velocity verlet here
 	for i in range(len(planets)):
 		planets[i].acc = forces[i]
 		center_of_mass.x_current += planets[i].x_current
 	center_of_mass.x_current /= len(planets)
-	$AudioListener2D.position = center_of_mass.position

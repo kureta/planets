@@ -40,7 +40,7 @@ func leapforg(delta):
 	first_step = !first_step
 
 func _physics_process(delta: float):
-	leapforg(delta)	
+	leapforg(delta)
 	position = transform(x_current)
 
 func _process(delta: float):
