@@ -24,7 +24,6 @@ func _ready() -> void:
 	center_of_mass = node_scene.instantiate()
 	add_child(center_of_mass)
 	center_of_mass.player.stop()
-	$AudioListener2D.position = center_of_mass.position
 	for i in range(n_particles - 1):
 		var instance = node_scene.instantiate()
 		instance.is_playing = true
@@ -65,4 +64,3 @@ func _physics_process(_delta: float):
 		planets[i].acc = forces[i]
 		center_of_mass.x += planets[i].x
 	center_of_mass.x /= len(planets)
-	$AudioListener2D.position = center_of_mass.position
