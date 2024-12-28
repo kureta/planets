@@ -2,8 +2,7 @@ extends Node2D
 
 var v0: Vector2
 var acc: Vector2
-var x_prev: Vector2
-var x_current: Vector2 
+var x: Vector2 
 
 var first_step = true
 
@@ -25,7 +24,7 @@ func _ready() -> void:
 	
 	pd = player.stream
 	pd.patch_path = "res://patches/planet_sound.pd"
-	position = transform(x_current)
+	position = transform(x)
 	f = randf_range(220, 880)
 
 	player.play()
@@ -34,14 +33,14 @@ func _ready() -> void:
 func leapforg(delta):
 	if first_step:
 		v0 = v0 + acc * delta
-		x_current = x_current + v0 * 2 * delta
+		x = x + v0 * 2 * delta
 	else:
 		v0 = v0 + acc * delta
 	first_step = !first_step
 
 func _physics_process(delta: float):
-	leapforg(delta)
-	position = transform(x_current)
+	leapforg(delta)	
+	position = transform(x)
 
 func _process(delta: float):
 	pd.send_float("ms", delta * 1000)
